@@ -16,10 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImpl(val userRepo: UserRepo,
-                      val authenticationManager: AuthenticationManager,
-                      val tokenGenerator: TokenGenerator,
-                      val passwordEncoder: PasswordEncoder): UserService {
+class UserServiceImpl(private val userRepo: UserRepo,
+                      private val authenticationManager: AuthenticationManager,
+                      private val tokenGenerator: TokenGenerator,
+                      private val passwordEncoder: PasswordEncoder): UserService {
 
     override fun register(request: SignUpRequest): UserDto {
         if (userRepo.findByEmail(request.email!!) != null) {
