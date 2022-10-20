@@ -1,7 +1,7 @@
-package com.edu.miu.security
+package edu.miu.security
 
-import com.edu.miu.repo.UserRepo
-import com.edu.miu.security.SignedInUser
+import edu.miu.repo.UserRepo
+import edu.miu.security.SignedInUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

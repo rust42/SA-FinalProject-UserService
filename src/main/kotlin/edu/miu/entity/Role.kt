@@ -1,4 +1,4 @@
-package com.edu.miu.entity
+package edu.miu.entity
 
 enum class Role {
     ADMIN, USER

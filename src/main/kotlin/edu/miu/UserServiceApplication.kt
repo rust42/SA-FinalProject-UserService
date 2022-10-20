@@ -1,4 +1,4 @@
-package com.edu.miu
+package edu.miu
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

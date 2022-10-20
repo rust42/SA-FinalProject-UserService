@@ -1,3 +1,3 @@
-package com.edu.miu.dto
+package edu.miu.dto
 
 data class UserDto(val email: String, val firstName: String, val lastName: String);

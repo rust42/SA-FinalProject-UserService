@@ -1,7 +1,7 @@
-package com.edu.miu.security
+package edu.miu.security
 
-import com.edu.miu.*
-import com.edu.miu.dto.ApiError
+import edu.miu.*
+import edu.miu.dto.ApiError
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys

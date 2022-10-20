@@ -1,4 +1,4 @@
-package com.edu.miu.dto
+package edu.miu.dto
 
 import javax.validation.constraints.NotBlank
 

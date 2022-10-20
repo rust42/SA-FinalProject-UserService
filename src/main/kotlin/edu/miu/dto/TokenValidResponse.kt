@@ -1,4 +1,4 @@
-package com.edu.miu.dto
+package edu.miu.dto
 
 data class TokenValidResponse(val valid: Boolean = true,
                               val email: String,

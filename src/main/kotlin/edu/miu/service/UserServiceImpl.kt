@@ -1,12 +1,12 @@
-package com.edu.miu.service
+package edu.miu.service
 
-import com.edu.miu.dto.*
-import com.edu.miu.entity.User
-import com.edu.miu.exception.InvalidCredentialError
-import com.edu.miu.exception.UserAlreadyExistsException
-import com.edu.miu.repo.UserRepo
-import com.edu.miu.security.SignedInUser
-import com.edu.miu.security.TokenGenerator
+import edu.miu.dto.*
+import edu.miu.entity.User
+import edu.miu.exception.InvalidCredentialError
+import edu.miu.exception.UserAlreadyExistsException
+import edu.miu.repo.UserRepo
+import edu.miu.security.SignedInUser
+import edu.miu.security.TokenGenerator
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

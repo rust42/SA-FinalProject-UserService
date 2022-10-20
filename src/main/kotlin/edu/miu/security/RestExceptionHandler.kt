@@ -1,8 +1,8 @@
-package com.edu.miu.security
+package edu.miu.security
 
-import com.edu.miu.dto.ApiError
-import com.edu.miu.exception.InvalidCredentialError
-import com.edu.miu.exception.UserAlreadyExistsException
+import edu.miu.dto.ApiError
+import edu.miu.exception.InvalidCredentialError
+import edu.miu.exception.UserAlreadyExistsException
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpHeaders

@@ -1,6 +1,6 @@
-package com.edu.miu.security
+package edu.miu.security
 
-import com.edu.miu.AUTHORITIES
+import edu.miu.AUTHORITIES
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value

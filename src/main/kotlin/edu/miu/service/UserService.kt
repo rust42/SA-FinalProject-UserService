@@ -1,6 +1,6 @@
-package com.edu.miu.service
+package edu.miu.service
 
-import com.edu.miu.dto.*
+import edu.miu.dto.*
 
 interface UserService {
     fun register(request: SignUpRequest): UserDto

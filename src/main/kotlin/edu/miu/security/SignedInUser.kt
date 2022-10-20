@@ -1,7 +1,7 @@
-package com.edu.miu.security
+package edu.miu.security
 
-import com.edu.miu.ROLE_PREFIX
-import com.edu.miu.entity.User
+import edu.miu.ROLE_PREFIX
+import edu.miu.entity.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

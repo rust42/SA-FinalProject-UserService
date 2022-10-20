@@ -1,4 +1,4 @@
-package com.edu.miu
+package edu.miu
 
 const val AUTHORIZATION_HEADER_KEY = "Authorization"
 const val BEARER_TOKEN_PREFIX = "Bearer "

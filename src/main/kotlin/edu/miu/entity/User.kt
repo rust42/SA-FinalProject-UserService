@@ -1,4 +1,4 @@
-package com.edu.miu.entity
+package edu.miu.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*

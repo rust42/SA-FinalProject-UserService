@@ -1,4 +1,4 @@
-package com.edu.miu.dto
+package edu.miu.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude

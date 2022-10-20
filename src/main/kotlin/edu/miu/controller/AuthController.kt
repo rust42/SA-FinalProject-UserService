@@ -1,7 +1,7 @@
-package com.edu.miu.controller
+package edu.miu.controller
 
-import com.edu.miu.dto.*
-import com.edu.miu.service.UserService
+import edu.miu.dto.*
+import edu.miu.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
