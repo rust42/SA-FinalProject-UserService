@@ -16,7 +16,7 @@ Note that when running this application as container these environment variables
 ```sh
     docker run -it \
         -e JWT_PREFIX=<prefix> -e JWT_SECRET=<secret>  -e JWT_ISSUER=<issuer> \
-        -e DB_USERNAME=root -e DB_PASSWORD=test -e DB_HOST=localhost:3306 -DATABASE_NAME=UserService
+        -e DB_USERNAME=root -e DB_PASSWORD=test -e DB_HOST=localhost:3306 -e DATABASE_NAME=UserService
         ghcr.io/rust42/sa-finalproject-userservice:main userservice
 ```
 
