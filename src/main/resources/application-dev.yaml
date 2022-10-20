@@ -1,0 +1,18 @@
+jwt:
+  prefix: ${JWT_PREFIX:6256B3E5CFC2C993}
+  secret: ${JWT_SECRET:@@Tl8QnFYS2W&@KJkB9i3C*thwHX!mPW1J0NG2kZ5l6Sf6j7&!}
+  issuer: ${JWT_ISSUER:edu.miu.cs590}
+spring:
+  datasource:
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:s3cr3t}
+    url: jdbc:mysql://${DB_HOST:localhost:3306}/${DATABASE_NAME:UserServiceDB}?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    root: debug
