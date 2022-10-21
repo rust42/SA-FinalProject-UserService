@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
+data:
+  MYSQL_DB_HOST: {{ .Release.Name | b64enc }}-mysql:3306
+
+
+

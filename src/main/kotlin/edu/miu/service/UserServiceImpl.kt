@@ -40,17 +40,20 @@ class UserServiceImpl(private val userRepo: UserRepo,
         )
     }
 
-    override fun loginUser(request: SignInRequest): TokenDto {
+    override fun loginUser(request: SignInRequest): SignInResponse {
         try {
             val authentication = authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(request.email, request.password)
             )
-            val user = authentication.principal as? SignedInUser
+            val principal = authentication.principal as? SignedInUser
             val token = tokenGenerator.generateAccessToken(authentication)
-            if (user == null) {
+
+            if (principal == null) {
                 throw InvalidCredentialError("Invalid authentication!")
             }
-            return TokenDto(token, user.username)
+            val user = userRepo.findByEmail(principal.username) ?: throw InvalidCredentialError("Invalid authentication!")
+
+            return SignInResponse(token, user.email, user.firstName, user.lastName)
         } catch (ex: BadCredentialsException) {
             throw InvalidCredentialError("Invalid credential passed!")
         }

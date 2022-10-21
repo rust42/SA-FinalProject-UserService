@@ -4,7 +4,9 @@ import edu.miu.dto.*
 import edu.miu.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -14,6 +16,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin
 class AuthController(private val userService: UserService) {
 
     @PostMapping("/signup")
@@ -23,7 +26,7 @@ class AuthController(private val userService: UserService) {
     }
 
     @PostMapping("/signin")
-    fun signin(@RequestBody @Valid request: SignInRequest): ResponseEntity<TokenDto> {
+    fun signin(@RequestBody @Valid request: SignInRequest): ResponseEntity<SignInResponse> {
         return ResponseEntity.ok(userService.loginUser(request))
     }
 
