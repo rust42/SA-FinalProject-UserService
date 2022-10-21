@@ -25,32 +25,32 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "manifests.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+{{/*      serviceAccountName: {{ include "manifests.serviceAccountName" . }}*/}}
+{{/*      securityContext:*/}}
+{{/*        {{- toYaml .Values.podSecurityContext | nindent 8 }}*/}}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+{{/*          livenessProbe:*/}}
+{{/*            httpGet:*/}}
+{{/*              path: /*/}}
+{{/*              port: http*/}}
+{{/*          readinessProbe:*/}}
+{{/*            httpGet:*/}}
+{{/*              path: /*/}}
+{{/*              port: http*/}}
           envFrom:
             - secretRef:
-                name: {{ .Release.Name }}-secrets
+                name: {{ .Release.Name }}-secrets-{{ .Release.Revision }}
             - configMapRef:
-                name: {{ .Release.Name }}-maps
+                name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

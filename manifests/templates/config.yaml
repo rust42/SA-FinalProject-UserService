@@ -3,7 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
 data:
-  MYSQL_DB_HOST: {{ .Release.Name | b64enc }}-mysql:3306
-
-
+  MYSQL_DB_HOST: {{ .Release.Name }}-mysql:3306
 
