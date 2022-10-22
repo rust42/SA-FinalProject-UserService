@@ -4,10 +4,9 @@ metadata:
   name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
 data:
   MYSQL_DATABASE_URL: {{ .Release.Name }}-mysql
-  DA: prod
-  MYSQL_DATABASE_PORT: 3306
-  APP_PROFILE: prod
-  MYSQL_DATABASE_NAME: UserServiceDB
+  MYSQL_DATABASE_PORT: "3306"
+  APP_PROFILE: "prod"
+  MYSQL_DATABASE_NAME: "UserServiceDB"
 
 
 

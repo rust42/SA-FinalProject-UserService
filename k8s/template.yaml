@@ -29,7 +29,7 @@ metadata:
 type: Opaque
 data:
   mysql-root-password: "dTMyaXV3ZXVpdXdla2o="
-  mysql-password: "QmFLNEFUNDRUaQ=="
+  mysql-password: "SXVoNVBESEJJTA=="
 ---
 # Source: usr-svc/templates/secret.yaml
 apiVersion: v1
@@ -95,10 +95,9 @@ metadata:
   name: dev-maps-1
 data:
   MYSQL_DATABASE_URL: dev-mysql
-  DA: prod
-  MYSQL_DATABASE_PORT: 3306
-  APP_PROFILE: prod
-  MYSQL_DATABASE_NAME: UserServiceDB
+  MYSQL_DATABASE_PORT: "3306"
+  APP_PROFILE: "prod"
+  MYSQL_DATABASE_NAME: "UserServiceDB"
 ---
 # Source: usr-svc/charts/mysql/templates/primary/svc-headless.yaml
 apiVersion: v1
@@ -261,7 +260,7 @@ spec:
         app.kubernetes.io/component: primary
     spec:
       serviceAccountName: dev-mysql
-      
+
       affinity:
         podAffinity:
 
