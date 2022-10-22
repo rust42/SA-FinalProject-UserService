@@ -36,16 +36,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.image.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.image.port }}
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: {{ .Values.image.port }}
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}-secrets-{{ .Release.Revision }}
