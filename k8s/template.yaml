@@ -383,7 +383,7 @@ spec:
     - host:
       http:
         paths:
-          - path: /api/auth
+          - path: /
             pathType: Prefix
             backend:
               service:
