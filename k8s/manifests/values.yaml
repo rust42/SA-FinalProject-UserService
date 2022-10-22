@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/rust42/sa-finalproject-userservice:main
+  repository: ghcr.io/rust42/sample-test-build:main
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -89,6 +89,7 @@ affinity: {}
 mysql:
   auth:
     rootPassword: u32iuweuiuwekj
+  username: root
 jwt:
   prefix: "6256B3E5CFC2C993"
   secret: "@@Tl8QnFYS2W&@KJkB9i3C*thwHX!mPW1J0NG2kZ5l6Sf6j7&!"
