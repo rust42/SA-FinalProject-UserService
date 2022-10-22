@@ -200,19 +200,12 @@ spec:
         - name: usr-svc
           securityContext:
             {}
-          image: "ghcr.io/rust42/sa-finalproject-userservice:main"
+          image: "skoirala/sa-miniproject-auth-service:latest"
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
-
-
-
-
-
-
-
 
           envFrom:
             - secretRef:
