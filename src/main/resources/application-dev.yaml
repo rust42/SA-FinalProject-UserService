@@ -4,9 +4,9 @@ jwt:
   issuer: ${JWT_ISSUER:edu.miu.cs590}
 spring:
   datasource:
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:s3cr3t}
-    url: jdbc:mysql://${DB_HOST:localhost:3306}/${DATABASE_NAME:UserServiceDB}?createDatabaseIfNotExist=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:s3cr3t}
+    url: jdbc:mysql://${MYSQL_DB_HOST:localhost:3306}/${MYSQL_DB_NAME:UserServiceDB}?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
