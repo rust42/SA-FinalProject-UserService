@@ -1,4 +1,4 @@
-FROM maven:alpine builder
+FROM maven:alpine as builder
 WORKDIR src
 COPY . .
 RUN mvn clean install -DskipTests
