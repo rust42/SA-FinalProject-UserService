@@ -40,12 +40,16 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path:  {{ .Values.image.liveness.path }}
               port: {{ .Values.image.port }}
+            initialDelaySeconds: {{ .Values.image.liveness.delay }}
+            periodSeconds: {{ .Values.image.liveness.period }}
           readinessProbe:
             httpGet:
-              path: /
+              path:  {{ .Values.image.readiness.path }}
               port: {{ .Values.image.port }}
+            initialDelaySeconds: {{ .Values.image.readiness.delay }}
+            periodSeconds: {{ .Values.image.readiness.period }}
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}-secrets-{{ .Release.Revision }}
