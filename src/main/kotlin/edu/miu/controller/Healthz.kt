@@ -14,7 +14,7 @@ class Healthz {
         return ResponseEntity.ok(map);
     }
 
-    @GetMapping
+    @GetMapping("/")
     fun health(): ResponseEntity<HashMap<String, String>> {
         return healthz()
     }
