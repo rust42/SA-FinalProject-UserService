@@ -200,7 +200,7 @@ spec:
         - name: usr-svc
           securityContext:
             {}
-          image: "skoirala/sa-miniproject-auth-service:latest"
+          image: "ghcr.io/devbinod/sa-auth-servce-mini-project:main"
           imagePullPolicy: Always
           ports:
             - name: http
