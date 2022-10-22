@@ -1,4 +1,4 @@
-FROM maven:3.8.4-eclipse-temurin-17-alpine as builder
+FROM maven:alpine builder
 WORKDIR src
 COPY . .
 RUN mvn clean install -DskipTests

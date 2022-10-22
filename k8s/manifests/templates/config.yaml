@@ -3,10 +3,9 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
 data:
-  MYSQL_DATABASE_URL: {{ .Release.Name }}-mysql
-  MYSQL_DATABASE_PORT: "3306"
-  APP_PROFILE: "prod"
-  MYSQL_DATABASE_NAME: "UserServiceDB"
+  MYSQL_DB_HOST: {{ .Release.Name }}-mysql:3306
+  SPRING_PROFILES_ACTIVE: "prod"
+  MYSQL_DB_NAME: "UserServiceDB"
 
 
 

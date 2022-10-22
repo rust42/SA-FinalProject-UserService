@@ -29,7 +29,7 @@ metadata:
 type: Opaque
 data:
   mysql-root-password: "dTMyaXV3ZXVpdXdla2o="
-  mysql-password: "TTdCTU1MamhkdQ=="
+  mysql-password: "RHZLMnJ4NVZXMg=="
 ---
 # Source: usr-svc/templates/secret.yaml
 apiVersion: v1
@@ -38,7 +38,7 @@ metadata:
   name: dev-secrets-1
 data:
   MYSQL_PASSWORD: dTMyaXV3ZXVpdXdla2o=
-  MYSQL_USERNAME: cm9vdA==
+  MYSQL_USER: cm9vdA==
   JWT_PREFIX: NjI1NkIzRTVDRkMyQzk5Mw==
   JWT_SECRET: QEBUbDhRbkZZUzJXJkBLSmtCOWkzQyp0aHdIWCFtUFcxSjBORzJrWjVsNlNmNmo3JiE=
   JWT_ISSUER: ZWR1Lm1pdS5jczU5MA==
@@ -94,10 +94,9 @@ kind: ConfigMap
 metadata:
   name: dev-maps-1
 data:
-  MYSQL_DATABASE_URL: dev-mysql
-  MYSQL_DATABASE_PORT: "3306"
-  APP_PROFILE: "dev"
-  MYSQL_DATABASE_NAME: "UserServiceDB"
+  MYSQL_DB_HOST: dev-mysql:3306
+  SPRING_PROFILES_ACTIVE: "prod"
+  MYSQL_DB_NAME: "UserServiceDB"
 ---
 # Source: usr-svc/charts/mysql/templates/primary/svc-headless.yaml
 apiVersion: v1
@@ -166,7 +165,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 80
-      targetPort: 8088
+      targetPort: 8080
       protocol: TCP
       name: http
   selector:
@@ -203,24 +202,24 @@ spec:
         - name: usr-svc
           securityContext:
             {}
-          image: "ghcr.io/rust42/sample-test-build:main"
+          image: "ghcr.io/rust42/sa-finalproject-userservice:main"
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 8088
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
-              port: 8088
-            periodSeconds: 20
-            initialDelaySeconds: 20
+              path:  /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /
-              port: 8088
-            periodSeconds: 20
-            initialDelaySeconds: 20
+              path:  /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
           envFrom:
             - secretRef:
                 name: dev-secrets-1

@@ -5,11 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/rust42/sample-test-build:main
+  repository: ghcr.io/rust42/sa-finalproject-userservice:main
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
-  port: 8088
+  port: 8080
   liveness:
     period: 10
     delay: 10
