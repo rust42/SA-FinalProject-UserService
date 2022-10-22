@@ -200,7 +200,7 @@ spec:
         - name: usr-svc
           securityContext:
             {}
-          image: "ghcr.io/rust42/sa-finalproject-userservice:main"
+          image: "ghcr.io/rust42/sample-test-build:main"
           imagePullPolicy: Always
           ports:
             - name: http
