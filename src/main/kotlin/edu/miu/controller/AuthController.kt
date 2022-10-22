@@ -2,6 +2,7 @@ package edu.miu.controller
 
 import edu.miu.dto.*
 import edu.miu.service.UserService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -17,8 +18,9 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin
-class AuthController(private val userService: UserService) {
-
+class AuthController() {
+    @Autowired
+    private lateinit var userService: UserService
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     fun signup(@RequestBody @Valid request: SignUpRequest): ResponseEntity<UserDto> {

@@ -7,6 +7,7 @@ import edu.miu.exception.UserAlreadyExistsException
 import edu.miu.repo.UserRepo
 import edu.miu.security.SignedInUser
 import edu.miu.security.TokenGenerator
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -16,11 +17,19 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImpl(private val userRepo: UserRepo,
-                      private val authenticationManager: AuthenticationManager,
-                      private val tokenGenerator: TokenGenerator,
-                      private val passwordEncoder: PasswordEncoder): UserService {
+class UserServiceImpl: UserService {
 
+    @Autowired
+    private lateinit var userRepo: UserRepo
+
+    @Autowired
+    private lateinit var authenticationManager: AuthenticationManager
+
+    @Autowired
+    private lateinit var tokenGenerator: TokenGenerator
+
+    @Autowired
+    private lateinit var passwordEncoder: PasswordEncoder
     override fun register(request: SignUpRequest): UserDto {
         if (userRepo.findByEmail(request.email!!) != null) {
             throw UserAlreadyExistsException("The email is already registered!")
