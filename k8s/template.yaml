@@ -29,7 +29,7 @@ metadata:
 type: Opaque
 data:
   mysql-root-password: "dTMyaXV3ZXVpdXdla2o="
-  mysql-password: "WklEOVNiSzFuSQ=="
+  mysql-password: "cmNta09DWTV3aw=="
 ---
 # Source: usr-svc/templates/secret.yaml
 apiVersion: v1
@@ -160,7 +160,7 @@ metadata:
     app.kubernetes.io/version: "1.16.0"
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 8080
@@ -200,25 +200,20 @@ spec:
         - name: usr-svc
           securityContext:
             {}
-          image: "ghcr.io/devbinod/sa-auth-servce-mini-project:main"
+          image: "ghcr.io/rust42/sa-finalproject-userservice:main"
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
-          readinessProbe:
-            tcpSocket:
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
           livenessProbe:
-            tcpSocket:
-              port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
-
-
-
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           envFrom:
             - secretRef:
                 name: dev-secrets-1
@@ -402,3 +397,24 @@ spec:
                 name: usr-svc-dev
                 port:
                   number: 80
+---
+# Source: usr-svc/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "usr-svc-dev-test-connection"
+  labels:
+    helm.sh/chart: usr-svc-0.1.0
+    app.kubernetes.io/name: usr-svc
+    app.kubernetes.io/instance: dev
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['usr-svc-dev:80']
+  restartPolicy: Never

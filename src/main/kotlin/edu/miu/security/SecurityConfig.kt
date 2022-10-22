@@ -31,7 +31,7 @@ class SecurityConfig {
             .and()
             .addFilterAfter(jwtTokenFilter, BasicAuthenticationFilter::class.java)
             .authorizeRequests()
-            .antMatchers("/api/auth/signin", "/api/auth/signup", "/actuator/**").permitAll()
+            .antMatchers("/api/auth/signin", "/api/auth/signup", "/actuator/**", "/health", "/").permitAll()
             .anyRequest().authenticated()
             .and().build()
     }
