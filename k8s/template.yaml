@@ -29,7 +29,7 @@ metadata:
 type: Opaque
 data:
   mysql-root-password: "dTMyaXV3ZXVpdXdla2o="
-  mysql-password: "cmNta09DWTV3aw=="
+  mysql-password: "NW5SVFUyWmp1Tg=="
 ---
 # Source: usr-svc/templates/secret.yaml
 apiVersion: v1
@@ -397,24 +397,3 @@ spec:
                 name: usr-svc-dev
                 port:
                   number: 80
----
-# Source: usr-svc/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "usr-svc-dev-test-connection"
-  labels:
-    helm.sh/chart: usr-svc-0.1.0
-    app.kubernetes.io/name: usr-svc
-    app.kubernetes.io/instance: dev
-    app.kubernetes.io/version: "1.16.0"
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['usr-svc-dev:80']
-  restartPolicy: Never
