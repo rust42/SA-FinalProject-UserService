@@ -4,4 +4,5 @@ metadata:
   name: {{ .Release.Name }}-maps-{{ .Release.Revision }}
 data:
   MYSQL_DB_HOST: {{ .Release.Name }}-mysql:3306
+  SPRING_PROFILES_ACTIVE: prod
 

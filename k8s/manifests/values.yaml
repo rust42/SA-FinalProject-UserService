@@ -16,7 +16,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
@@ -89,8 +89,6 @@ affinity: {}
 mysql:
   auth:
     rootPassword: u32iuweuiuwekj
-    username: root
-
 jwt:
   prefix: "6256B3E5CFC2C993"
   secret: "@@Tl8QnFYS2W&@KJkB9i3C*thwHX!mPW1J0NG2kZ5l6Sf6j7&!"

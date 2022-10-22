@@ -25,9 +25,9 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-{{/*      serviceAccountName: {{ include "manifests.serviceAccountName" . }}*/}}
-{{/*      securityContext:*/}}
-{{/*        {{- toYaml .Values.podSecurityContext | nindent 8 }}*/}}
+      serviceAccountName: {{ include "manifests.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
