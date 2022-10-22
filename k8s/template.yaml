@@ -29,7 +29,7 @@ metadata:
 type: Opaque
 data:
   mysql-root-password: "dTMyaXV3ZXVpdXdla2o="
-  mysql-password: "SXVoNVBESEJJTA=="
+  mysql-password: "TTdCTU1MamhkdQ=="
 ---
 # Source: usr-svc/templates/secret.yaml
 apiVersion: v1
@@ -38,7 +38,7 @@ metadata:
   name: dev-secrets-1
 data:
   MYSQL_PASSWORD: dTMyaXV3ZXVpdXdla2o=
-  MYSQL_USERNAME: root
+  MYSQL_USERNAME: cm9vdA==
   JWT_PREFIX: NjI1NkIzRTVDRkMyQzk5Mw==
   JWT_SECRET: QEBUbDhRbkZZUzJXJkBLSmtCOWkzQyp0aHdIWCFtUFcxSjBORzJrWjVsNlNmNmo3JiE=
   JWT_ISSUER: ZWR1Lm1pdS5jczU5MA==
@@ -96,7 +96,7 @@ metadata:
 data:
   MYSQL_DATABASE_URL: dev-mysql
   MYSQL_DATABASE_PORT: "3306"
-  APP_PROFILE: "prod"
+  APP_PROFILE: "dev"
   MYSQL_DATABASE_NAME: "UserServiceDB"
 ---
 # Source: usr-svc/charts/mysql/templates/primary/svc-headless.yaml
@@ -166,7 +166,7 @@ spec:
   type: ClusterIP
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 8088
       protocol: TCP
       name: http
   selector:
@@ -207,16 +207,20 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8088
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8088
+            periodSeconds: 20
+            initialDelaySeconds: 20
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 8088
+            periodSeconds: 20
+            initialDelaySeconds: 20
           envFrom:
             - secretRef:
                 name: dev-secrets-1
